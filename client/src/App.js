@@ -4,7 +4,7 @@ import ContactInfo from './components/contactInfo.js'; // Import the ContactInfo
 import AddContact from './components/addContact.js'; // Import the AddContact component
 import './App.css'; // Import App (main) styling
 
-const $ = window.$;
+const $ = window.$; // Set JQuery variable
 
 class App extends Component {
   constructor(props){
@@ -68,7 +68,7 @@ class App extends Component {
   }
   
   // Function to update the status to display the add contact form
-  // Called in the Contacts Component when the plus sign in clicked
+  // Called in the Contacts Component when the "Add contact" text is clicked
   viewAddContactForm(){
     this.setState({ infoStatus: 'add' }); // Change the info section status to 'add'
   }
@@ -196,7 +196,7 @@ class App extends Component {
   }
   
   // Function to call the API function to delete a contact by id
-  // Called in the Contacts Component when the trash can icon is clicked
+  // Called in the Contacts and ContactInfo Components when the text or button (respectively) is clicked
   deleteContact(id){
     // Call the API function to get the info of the selected contact
     this.apiDeleteContact(id)
@@ -212,10 +212,10 @@ class App extends Component {
       .catch(err => console.log(err)); // Print out the error if failed
   }
   
-  // Function that makes a HTTP Get request to get all contacts
+  // Function that makes a HTTP GET request to get all contacts
   // Called in the componentDidMount function
   apiGetContacts = async () => {
-    // Make request
+    // Make GET request
     const response = await fetch('/api/contacts', {
       method: "get"
     });
@@ -227,10 +227,10 @@ class App extends Component {
     return body.array; // Return the array of contacts
   }
   
-  // Function that makes a HTTP Get request to get information of a single contacts based on id
+  // Function that makes a HTTP GET request to get information of a single contacts based on id
   // Called in the viewContact function
   apiGetContactInfo = async (id) => {
-    // Make request
+    // Make GET request
     const response = await fetch('/api/contacts/' + id, {
       method: "get"
     });
@@ -242,11 +242,12 @@ class App extends Component {
     return body.array[0]; // Return the array of contact information
   }
   
-  // Function that makes a HTTP Post request to add a contact to the database
+  // Function that makes a HTTP POST request to add a contact to the database
   // Called in the addContact function
   apiAddContact = async (contact) => {
-    const url = '/api/contacts?contact=' + JSON.stringify(contact);
+    const url = '/api/contacts?contact=' + JSON.stringify(contact); // Set url for POST request
     
+    // Make POST request
     const response = await fetch(url, {
       method: "post"
     });
@@ -256,11 +257,12 @@ class App extends Component {
     return;
   }
   
-  // Function that makes a HTTP Put request to update an existing contact
+  // Function that makes a HTTP PUT request to update an existing contact
   // Called in the updateContact function
   apiUpdateContact = async (contact) => {
-    const url = '/api/contacts/' + contact.id + '?contact=' + JSON.stringify(contact);
+    const url = '/api/contacts/' + contact.id + '?contact=' + JSON.stringify(contact); // Set url for PUT request
     
+    // Make PUT request
     const response = await fetch(url, {
       method: "put"
     });
@@ -270,14 +272,15 @@ class App extends Component {
     return;
   }
   
-  // Function that makes a HTTP Delete request to delete a contact from the database
+  // Function that makes a HTTP DELETE request to delete a contact from the database
   // Called in the deleteContact function
   apiDeleteContact = async (id) => {
+    // Make DELETE request
     const response = await fetch('/api/contacts/' + id, {
       method: "delete"
     });
     
-    if (response.status !== 204) throw Error(response.statusText);
+    if (response.status !== 204) throw Error(response.statusText); // If the status is not OK throw error using the message returned
     
     return;
   }

@@ -4,6 +4,7 @@ import '../views/contactInfo.css' // Import contact info styling
 class ContactInfo extends Component{
   // Render the contact's information
   render(){
+    // Create the formFooter bassed on the status
     const formFooter = this.props.status === "edit" ?
       <div className="formFooter">
         <div className="updateContactError">{this.props.errorMessage}</div>

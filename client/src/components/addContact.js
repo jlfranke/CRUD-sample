@@ -1,8 +1,8 @@
 import React, { Component } from 'react'; // Import React and Component from react library
 import '../views/addContact.css' // Import the addContact styling
 
-
 class AddContact extends Component{
+  // Render the Add New Contact form
   render(){
     return(
       <div className="addContact">
