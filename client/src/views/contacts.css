@@ -1,0 +1,32 @@
+/* Add Contact Styling */
+.addContactText{
+  font-size: 12pt;
+}
+
+.addContactText:hover, .addContactText:focus{
+  color: #00CCFF;
+  cursor: pointer;
+}
+
+/* List Styling */
+div.contacts{
+  max-width: 70%;
+}
+
+div.contacts p{
+  border-bottom: 1px solid #999999;
+  padding-bottom: 5px;
+}
+
+div.contacts p span:hover{
+  cursor: pointer;
+}
+
+.deleteContactText{
+  float: right;
+}
+
+.deleteContactText:hover, .deleteContactText:focus{
+  color: #FF0000;
+  cursor: pointer;
+}

@@ -1,0 +1,13 @@
+/* Contact"s Information Styling */
+button.btn-primary{
+  float: right;
+  vertical-align: top;
+}
+
+/* Error Message Styling */
+.updateContactError{
+  color: #FF0000;
+  display: inline-block;
+  max-width: 75%;
+  word-wrap: break-word;
+}

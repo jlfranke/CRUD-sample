@@ -1,0 +1,32 @@
+/* Reset margins and paddings */
+*{
+  margin: 0;
+  padding: 0;
+}
+
+/* Page wide Styling */
+body{
+  font-family: "Book Antiqua", "Times New Roman", serif;
+}
+
+/* Header Styling */
+header{
+  margin: 25px 0;
+  text-align: center;
+}
+
+/* Div Body/Content Styling */
+.contactList, .contactInfo{
+  display: inline-block;
+  vertical-align: top;
+  width: 49%;
+}
+
+/* Message Styling */
+.successMessage{
+  color: #00CC00;
+}
+
+.deletionMessage{
+  color: #FF0000;
+}
