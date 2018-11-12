@@ -146,7 +146,12 @@ class App extends Component {
       // Check that the phone has 10 digits only
       if(info['phone_number'].replace(/\D/g,'').length !== 10){
         errorMessage += "Phone must have 10 digits. "; // Add error message
-      }  
+      }
+      
+      // Check that the email has a prefix and a domain
+      if (!/(\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,6})$/.test(info['email'])) {
+        errorMessage += "Email is invalid. "; // Add error message
+      }
     }    
     
     this.setState({ newContactError: errorMessage }); // Set the error message state
