@@ -77,8 +77,6 @@ contactsRouter.post('/', (req, res) => {
 contactsRouter.put('/:id', (req, res) => {
   console.log("UPDATING A CONTACT");
   
-  console.log(req.params.id);
-  
   const data = JSON.parse(req.query.contact);
   const query = "UPDATE `contacts` as c INNER JOIN `contact_info` as ci ON (c.id = ci.id) SET c.first_name = '" + data.first_name + "', c.last_name = '" + data.last_name + "', ci.phone_number = '" + data.phone_number + "', ci.email = '" + data.email + "', ci.address = '" + data.address + "' WHERE c.id = '" + req.params.id + "' AND ci.id = '" + req.params.id + "'";
   
@@ -87,6 +85,7 @@ contactsRouter.put('/:id', (req, res) => {
       res.status(400).send(err);
     }
     else{
+      console.log("Contact has been updated.");
       res.status(200).send();
     }
   });
